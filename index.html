@@ -4,12 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV</title>
+    <!--Internal Styling-->
+    
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-header {
+            background-color: antiquewhite;
+            padding: 16px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-ul{
+            list-style: none;
+            display: flex;
+            gap: 64px;
+            justify-content: space-between;
+            min-width: 100%;
+            background-color: aqua;
+            max-width: 700px;
+            
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header class="nav-header">
         <nav>
-            <ul>
-                <li>Om mig</li>
+            <ul class="nav-ul">
+                <li><a href="#footer">Om mig</a></li>
                 <li>Utbildning</li>
                 <li>Arbetslivserfarenhet</li>
                 <li>Tech stack</li>
@@ -18,7 +45,7 @@
     </header>
 
 <main>
-    <section>
+    <section class="about-me"> 
         <h2>Om mig</h2>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, nostrum! Excepturi enim sit praesentium vel obcaecati minus quam possimus cumque.</p>      
     </section>
@@ -37,6 +64,13 @@
             <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores delectus iusto inventore quo architecto repudiandae impedit doloremque perspiciatis, tempora suscipit!</p>
 
             <ol>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quidem blanditiis labore iusto sapiente repellendus adipisci nihil dignissimos ut assumenda?</li>
@@ -95,6 +129,10 @@
         </div>
     </section>
 </main>
+<footer id="footer">
+    <a href="tel:+6494461709">61709</a>
+    <a href="mailto:alex.flisager@angeskola.se">skicka</a>
+</footer>
     
 </body>
 </html>
