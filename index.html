@@ -42,8 +42,9 @@
         {
 
             transition: all 0.2s ease-in-out;
-            color: rgba(255, 0, 0, 0.589);
+            color: rgba(0, 0, 0, 0.589);
             text-decoration: underline;
+            animation: rainbow-text 10s linear infinite;
         }
 
         main{
@@ -51,10 +52,71 @@
             display: flex;
             flex-direction: column;
             gap: 64px;
-            padding: 32px;
         }
             
-        
+        @keyframes rainbow-bg {
+  0% { background-color: hsl(0, 100%, 50%); }
+  17% { background-color: hsl(291, 100%, 50%); }
+  34% { background-color: hsl(240, 100%, 50%); }
+  51% { background-color: hsl(120, 100%, 50%); }
+  68% { background-color: hsl(60, 100%, 50%); }
+  85% { background-color: hsl(30, 100%, 50%); }
+  100% { background-color: hsl(0, 100%, 50%); }
+}
+
+@keyframes rainbow-text {
+  0% { text-decoration-color: hsl(0, 100%, 50%); }
+  17% { text-decoration-color: hsl(291, 100%, 50%); }
+  34% { text-decoration-color: hsl(240, 100%, 50%); }
+  51% { text-decoration-color: hsl(120, 100%, 50%); }
+  68% { text-decoration-color: hsl(60, 100%, 50%); }
+  85% { text-decoration-color: hsl(30, 100%, 50%); }
+  100% { text-decoration-color: hsl(0, 100%, 50%); }
+}
+
+.about-me {
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 64px;
+  animation: rainbow-bg 10s linear infinite;
+}
+
+.education{
+    font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 64px;
+  animation: rainbow-bg 10s linear infinite;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.article-header{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    
+}
+
+ol{
+    list-style: none;
+    line-height: 1.2rem;
+}
+
+.p-header{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    grid-column: auto;
+}
+
 
     </style>
 </head>
@@ -76,11 +138,11 @@
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, nostrum! Excepturi enim sit praesentium vel obcaecati minus quam possimus cumque.</p>      
     </section>
 
-    <section id = "education">
+    <section id="education" class="education">
         <h2>Utbildning</h2>
-        <header>        
+        <header class="article-header">        
             <h4>Frontutveckling</h4>
-            <p>
+            <p class="p-header">
                 <strong>Bobergsgymnasiet</strong>
                 <time datetime ="2022-10">Oktober 2022</time>
                 <span>-</span>
@@ -109,7 +171,7 @@
 
     <section id = "work">
         <h2>Arbetslivserfarenhet</h2>
-        <header>        
+        <header class="article-header">        
             <article>
             <h4>Bilmekaniker</h4>
             <p>
