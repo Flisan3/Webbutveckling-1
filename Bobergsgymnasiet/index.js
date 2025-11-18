@@ -1,6 +1,8 @@
 const nav = document.querySelector("nav");
 const mobileNav = document.querySelector(".mobile-nav");
 const hamburgerBtn = document.querySelector("#menu-open");
+const xBtn = document.querySelector("#menu-close");
+
 
 const news = [
     {
@@ -30,12 +32,14 @@ const closeMenu = () => {
     mobileNav.classList.add("hidden");
     nav.classList.add("nav-closed");
     hamburgerBtn.classList.remove("hidden");
+    xBtn.classList.add("hidden");
 }; 
 
 const openMenu = () => {
     hamburgerBtn.classList.add("hidden");
     nav.classList.remove("nav-closed");
     mobileNav.classList.remove("hidden");
+    xBtn.classList.remove("hidden");
 };     
 
 const menuCloseBtn = document

@@ -61,7 +61,8 @@ a {
 .menu-btn {
     width: 32px;
     position: absolute;
-    right: 0;
+    right: 6px;
+    top: 6px;
 }
 
 .news-grid {
@@ -87,3 +88,16 @@ a {
 
 }
 
+.menu-open {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.school-link {
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
