@@ -101,3 +101,119 @@ if(document.querySelector(".news-content")) {renderNewsDetail();
 };
 
 
+
+const events = [
+    {
+        date: "10 dec",
+        heading: "Nobeldag/UF-mässa",
+        day: "Onsdag",
+        statusColor: "yellow"
+    },
+    {
+        date: "19 dec",
+        heading: "Julavslutning",
+        day: "Fredag",
+        statusColor: "green"
+    },
+    {
+        date: "20 dec",
+        heading: "Jullov",
+        day: "Lördag",
+        statusColor: "red"
+    },
+    {
+        date: "09 feb",
+        heading: "Studiedag",
+        day: "Måndag",
+        statusColor: "red"
+    },
+    {
+        date: "02 mar",
+        heading: "Sportlov",
+        day: "Måndag",
+        statusColor: "red"
+    },
+    {
+        date: "02 mar",
+        heading: "Sportlov",
+        day: "Måndag",
+        statusColor: "red"
+    },
+    {
+        date: "02 mar",
+        heading: "Sportlov",
+        day: "Måndag",
+        statusColor: "red"
+    },
+    {
+        date: "02 mar",
+        heading: "Sportlov",
+        day: "Måndag",
+        statusColor: "red"
+    },
+    {
+        date: "02 mar",
+        heading: "Sportlov",
+        day: "Måndag",
+        statusColor: "red"
+    },
+    {
+        date: "02 mar",
+        heading: "Sportlov",
+        day: "Måndag",
+        statusColor: "red"
+    },
+
+]
+
+
+
+const renderMoreEvents = () => {
+    const container = document.querySelector(".events-grid");
+
+    const showcounter = 3;
+
+    events.slice(0,showcounter).forEach((event) => {
+        const eventItem = document.createElement("div");
+        eventItem.className = "event-item";
+
+        eventItem.innerHTML = `
+            <p class="event-date">${event.date}</p>
+            <h3 class="event-heading">${event.heading}</h3>
+            <p class="event-day">${event.day}</p>
+            <span class="event-status ${event['status-color']}"></span>
+        `;
+        container.appendChild(eventItem);
+    });
+    showcounter +=3;
+};
+
+const renderStartEvents = () => {
+    const container = document.querySelector(".events-grid");
+    
+    events.slice(0, 3).forEach((event) => {
+        const eventItem = document.createElement("div");
+        eventItem.className = "event-item";
+    
+        eventItem.innerHTML = `
+            <p class="event-date">${event.date}</p>
+            <h3 class="event-heading">${event.heading}</h3>
+            <p class="event-day">${event.day}</p>
+            <span class="event-status ${event['status-color']}"></span>
+        `;
+         
+        container.appendChild(eventItem);
+
+    });
+
+   const moreButton = document.createElement("button");
+    moreButton.className = "more-events-button";
+    moreButton.innerHTML = "VISA FLER";
+    container.appendChild(moreButton);
+};
+
+renderStartEvents();
+
+const showAllEvents = document
+.querySelector(".more-events-button")
+.addEventListener("click", renderMoreEvents)
