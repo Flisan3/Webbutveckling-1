@@ -121,3 +121,59 @@ a{
 .back-link:hover {
     text-decoration: underline;
 }
+
+.event-item{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid #3f3f3f;
+    padding: 8px;
+    position: relative;
+}
+.event-date{
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 0px;
+    background-color: red;
+    padding: 4px;
+    width: fit-content;
+}
+
+.event-date-two{
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 0px;
+    background-color: red;
+    border-radius: 4px;
+    padding: 4px;
+    width: fit-content;
+}
+
+.event-heading{
+    font-weight: 400;
+    font-size: 1rem;
+    position: absolute;
+    top: 0px;
+    left: 150px;
+    bottom: 30px;
+    top : 20px;
+}
+
+.event-day{
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 4px;
+    position: relative;
+    bottom: 10px;
+}
+
+.event-status{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    left: -24px;
+    top: 4px;
+}

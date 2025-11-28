@@ -117,6 +117,7 @@ const events = [
     },
     {
         date: "20 dec",
+        endDate: "07 jan",
         heading: "Jullov",
         day: "Lördag",
         statusColor: "red"
@@ -129,91 +130,87 @@ const events = [
     },
     {
         date: "02 mar",
+        endDate: "08 mar",
         heading: "Sportlov",
         day: "Måndag",
         statusColor: "red"
     },
     {
-        date: "02 mar",
-        heading: "Sportlov",
-        day: "Måndag",
+        date : "03 Apr",
+        endDate: "12 Apr",
+        heading: "Påsklov",
+        day: "Fredag",
         statusColor: "red"
     },
     {
-        date: "02 mar",
-        heading: "Sportlov",
-        day: "Måndag",
+        date: "30 Apr",
+        heading: "Lovdag",
+        day: "Torsdag",
         statusColor: "red"
     },
     {
-        date: "02 mar",
-        heading: "Sportlov",
-        day: "Måndag",
+        date: "15 Maj",
+        heading: "Lovdag",
+        day: "Fredag",
         statusColor: "red"
     },
     {
-        date: "02 mar",
-        heading: "Sportlov",
-        day: "Måndag",
-        statusColor: "red"
-    },
-    {
-        date: "02 mar",
-        heading: "Sportlov",
-        day: "Måndag",
-        statusColor: "red"
+        date: "12 Jun",
+        heading: "Avslutning/Student",
+        day: "Fredag",
+        statusColor: "yellow"
     },
 
 ]
 
+let showcounter = 3;
 
-
-const renderMoreEvents = () => {
-    const container = document.querySelector(".events-grid");
-
-    const showcounter = 3;
-
-    events.slice(0,showcounter).forEach((event) => {
-        const eventItem = document.createElement("div");
-        eventItem.className = "event-item";
-
-        eventItem.innerHTML = `
-            <p class="event-date">${event.date}</p>
-            <h3 class="event-heading">${event.heading}</h3>
-            <p class="event-day">${event.day}</p>
-            <span class="event-status ${event['status-color']}"></span>
-        `;
-        container.appendChild(eventItem);
-    });
-    showcounter +=3;
-};
 
 const renderStartEvents = () => {
     const container = document.querySelector(".events-grid");
+
+    console.log(showcounter);
     
-    events.slice(0, 3).forEach((event) => {
+    container.innerHTML = "";
+
+    events.slice(0,showcounter).forEach
+    ((event) => {
         const eventItem = document.createElement("div");
         eventItem.className = "event-item";
-    
-        eventItem.innerHTML = `
-            <p class="event-date">${event.date}</p>
-            <h3 class="event-heading">${event.heading}</h3>
-            <p class="event-day">${event.day}</p>
-            <span class="event-status ${event['status-color']}"></span>
-        `;
-         
-        container.appendChild(eventItem);
 
+        if(event.endDate == null){
+            eventItem.innerHTML = `
+                <p class="event-date">${event.date}</p>
+                <h3 class="event-heading">${event.heading}</h3>
+                <p class="event-day">${event.day}</p>
+                <span class="event-status ${event['status-color']}"></span>
+            `;
+            container.appendChild(eventItem);
+        }
+        else{
+            eventItem.innerHTML = `
+                <p class="event-date-two">${event.date} - ${event.endDate ? event.endDate : ""}</p>
+                <h3 class="event-heading">${event.heading}</h3>
+                <p class="event-day">${event.day}</p>
+                <span class="event-status ${event['status-color']}"></span>
+            `;
+            container.appendChild(eventItem);
+        }
     });
-
-   const moreButton = document.createElement("button");
-    moreButton.className = "more-events-button";
-    moreButton.innerHTML = "VISA FLER";
-    container.appendChild(moreButton);
+    
 };
 
-renderStartEvents();
+const showCounterIncrease = () => {
+        showcounter = showcounter+3;
+        renderStartEvents();
 
-const showAllEvents = document
-.querySelector(".more-events-button")
-.addEventListener("click", renderMoreEvents)
+            if (showcounter >= events.length) {
+                document.querySelector("#load-more-btn").style.display = "none";
+            }
+    }
+
+const showMoreBtn = document
+.querySelector("#load-more-btn")
+.addEventListener("click", showCounterIncrease);
+
+renderStartEvents();
