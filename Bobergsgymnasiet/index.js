@@ -42,13 +42,8 @@ const openMenu = () => {
     xBtn.classList.remove("hidden");
 };     
 
-const menuCloseBtn = document
-.querySelector("#menu-close")
-.addEventListener("click", closeMenu)
-
-const menuOpenBtn = document
-.querySelector("#menu-open")
-.addEventListener("click", openMenu)
+document.querySelector("#menu-close").addEventListener("click", closeMenu);
+document.querySelector("#menu-open").addEventListener("click", openMenu);
 
 const renderNews = () => {
     const container = document.querySelector(".news-grid");
@@ -75,11 +70,9 @@ const renderNewsDetail = () => {
     const container = document.querySelector(".news-content");
     if (!container) return;
 
-    //Hämta ID från URL-parametern
     const urlParams = new URLSearchParams(window.location.search);
     const newsId = urlParams.get("id");
 
-    //Hitta rätt artikel
     const newsItem = news.find((n) => n.id === newsId);
 
     if (newsItem) {
@@ -89,128 +82,132 @@ const renderNewsDetail = () => {
           <p class="news-date">${newsItem.date}</p>
           <p class="news-text">${newsItem.content}</p>
         `;
-} else {
-    container.innerHTML = "<p>Artikeln kunde inte hittas.</p>";
+    } else {
+        container.innerHTML = "<p>Artikeln kunde inte hittas.</p>";
     }
 };
 
-
-// Kör rätt funktion beroende på vilken sida vi är på
 if (document.querySelector(".news-grid")) renderNews();
-if(document.querySelector(".news-content")) {renderNewsDetail();
-};
+if (document.querySelector(".news-content")) renderNewsDetail();
 
 
-
+// EVENTS
 const events = [
     {
-        date: "10 dec",
+        date: "10",
+        datemonth: "DEC",
         heading: "Nobeldag/UF-mässa",
         day: "Onsdag",
         statusColor: "yellow"
     },
     {
-        date: "19 dec",
+        date: "19",
+        datemonth: "DEC",
         heading: "Julavslutning",
         day: "Fredag",
         statusColor: "green"
     },
     {
-        date: "20 dec",
-        endDate: "07 jan",
+        date: "20",
+        datemonth: "DEC",
+        endDate: "07",
+        endDatemonth: "JAN",
         heading: "Jullov",
         day: "Lördag",
         statusColor: "red"
     },
     {
-        date: "09 feb",
+        date: "09",
+        datemonth: "FEB",
         heading: "Studiedag",
         day: "Måndag",
         statusColor: "red"
     },
     {
-        date: "02 mar",
-        endDate: "08 mar",
+        date: "02",
+        datemonth: "MAR",
+        endDate: "08",
+        endDatemonth: "MAR",
         heading: "Sportlov",
         day: "Måndag",
         statusColor: "red"
     },
     {
-        date : "03 Apr",
-        endDate: "12 Apr",
+        date : "03",
+        datemonth: "APR",
+        endDate: "12",
+        endDatemonth: "APR",
         heading: "Påsklov",
         day: "Fredag",
         statusColor: "red"
     },
     {
-        date: "30 Apr",
+        date: "30",
+        datemonth: "APR",
         heading: "Lovdag",
         day: "Torsdag",
         statusColor: "red"
     },
     {
-        date: "15 Maj",
+        date: "15",
+        datemonth: "MAJ",
         heading: "Lovdag",
         day: "Fredag",
         statusColor: "red"
     },
     {
-        date: "12 Jun",
+        date: "12",
+        datemonth: "JUN",
         heading: "Avslutning/Student",
         day: "Fredag",
         statusColor: "yellow"
-    },
-
-]
+    }
+];
 
 let showcounter = 3;
 
-
 const renderStartEvents = () => {
     const container = document.querySelector(".events-grid");
-
-    console.log(showcounter);
-    
     container.innerHTML = "";
 
-    events.slice(0,showcounter).forEach
-    ((event) => {
+    events.slice(0, showcounter).forEach((event) => {
         const eventItem = document.createElement("div");
         eventItem.className = "event-item";
 
-        if(event.endDate == null){
-            eventItem.innerHTML = `
-                <p class="event-date">${event.date}</p>
-                <h3 class="event-heading">${event.heading}</h3>
-                <p class="event-day">${event.day}</p>
-                <span class="event-status ${event['status-color']}"></span>
-            `;
-            container.appendChild(eventItem);
+        let endDay = "";
+        if (event.endDate) endDay = event.endDate.split(" ")[0];
+
+        let monthDisplay = event.datemonth;
+        if (event.endDatemonth && event.endDatemonth !== event.datemonth) {
+            monthDisplay = `${event.datemonth} - ${event.endDatemonth}`;
         }
-        else{
-            eventItem.innerHTML = `
-                <p class="event-date-two">${event.date} - ${event.endDate ? event.endDate : ""}</p>
-                <h3 class="event-heading">${event.heading}</h3>
-                <p class="event-day">${event.day}</p>
-                <span class="event-status ${event['status-color']}"></span>
-            `;
-            container.appendChild(eventItem);
-        }
+
+        const dateDisplay = event.endDate
+            ? `${event.date} - ${endDay}`
+            : event.date;
+
+        eventItem.innerHTML = `
+            <p class="event-date-two">${dateDisplay}</p>
+            <h3 class="event-heading">${event.heading}</h3>
+            <span class="dot"></span>
+            <p class="event-day">${event.day}</p>
+            <span class="event-status ${event['status-color']}"></span>
+            <p class="event-month">${monthDisplay}</p>
+        `;
+
+        container.appendChild(eventItem);
     });
-    
 };
 
 const showCounterIncrease = () => {
-        showcounter = showcounter+3;
-        renderStartEvents();
+    showcounter += 3;
+    renderStartEvents();
 
-            if (showcounter >= events.length) {
-                document.querySelector("#load-more-btn").style.display = "none";
-            }
+    if (showcounter >= events.length) {
+        document.querySelector("#load-more-btn").style.display = "none";
     }
+};
 
-const showMoreBtn = document
-.querySelector("#load-more-btn")
-.addEventListener("click", showCounterIncrease);
+document.querySelector("#load-more-btn").addEventListener("click", showCounterIncrease);
 
 renderStartEvents();
