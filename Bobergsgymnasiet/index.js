@@ -3,29 +3,103 @@ const mobileNav = document.querySelector(".mobile-nav");
 const hamburgerBtn = document.querySelector("#menu-open");
 const xBtn = document.querySelector("#menu-close");
 
+let shownEvents = 3;
 
 const news = [
-    {
-        id: "1",
-        img: "./img/img1.webp",
-        title: "Föredrag 22/10",
-        date: "16 oktober 2025",
-        content: "Niorna kommer och hälsar på och våra egna elever blir utan lektioner – då bjuder vi in föreläsare som kommer och tar hand om dem istället! Åk1 och HSF2 börjar dagen med ett evenemang i Folkets Hus Ånge men kommer sedan upp och avslutar dagen med övriga. Åk3 och YRK2 är i Aulan och får träffa representanter från polisen, Näringslivskontoret, Rocco Oil, Campus Ånge/Komvux, Ålsta folkhögskola, socialkontoret och Kriminalvården. Vi hoppas på en spännande dag!",
-    },
-    {
-        id: "2",
-        img: "./img/img2.webp",
-        title: "Åk 9 besöksdag",
-        date: "5 oktober 2025",
-        content:"Välkommen till Bobergsgymnasiet onsdag 22/10!Dagen börjar med att vi samlas i Posthuset där du får ditt schema och en påse med lite smått och gott. Du får sedan information från de tre program som du valt, och lunch. Under programpasset får du även träffa olika företag/arbetsgivare som är aktuella för just det programmet. De kan berätta precis vad de söker efter hos sina anställda, och hur det är att jobba där. Passa på att ställa massa frågor även till dem!Vi avslutar sedan dagen tillsammans med gott fika.Välkommen till en inspirerande dag om ditt gymnasieval! "
-    },
-    {
-        id:"3",
-        img: "./img/img3.webp",
-        title: "Föräldramäte åk 1 9/9",
-        date: "2 september 2025",
-        content: "Till vårdnadshavare för elever i årskurs 1Välkomna till föräldramöte!Ni är varmt välkomna till skolan för att träffa rektor, mentorer och en del annan personal. Vi vill gärna ha ett nära samarbete med er så att vi tillsammans kan hjälpa eleverna att lyckas med sin skolgång. Det är första terminen för era ungdomar i en ny skolform som ställer annorlunda krav och har andra förutsättningar än tidigare.Tid:                  Tisdag 9 september 2025, kl. 18.30.Plats:               Aulan, Bobergsgymnasiet (mitt i huset, en trappa upp från huvudentrén).Vi kommer först ses i helgrupp för en del allmän information. Efter det går ni vidare med mentorerna för ytterligare information och samtal om just er klass. Under kvällen kommer vi att tala om våra regler och rutiner, informera om programmen i gymnasieskolan och hur arbetet med elevernas lärande går till på Bobergsgymnasiet. Naturligtvis bjuder vi även på fika. Välkomna! / Jennie Stadling Wilsson, rektor Bobergsgymnasiet.Vi ber er fylla i nedanstående talong som lämnas till mentor senast torsdag 4/9. Tack!"
-    }
+  {
+    id: "1",
+    img: "./img/img1.jpg",
+    title: "Föredrag 22/10",
+    date: "16 oktober 2025",
+    content:
+      "Niorna kommer och hälsar på och våra egna elever blir utan lektioner – då bjuder vi in föreläsare som kommer och tar hand om dem istället! Åk1 och HSF2 börjar dagen med ett evenemang i Folkets Hus Ånge men kommer sedan upp och avslutar dagen med övriga. Åk3 och YRK2 är i Aulan och får träffa representanter från polisen, Näringslivskontoret, Rocco Oil, Campus Ånge/Komvux, Ålsta folkhögskola, socialkontoret och Kriminalvården. Vi hoppas på en spännande dag!",
+  },
+  {
+    id: "2",
+    img: "./img/img2.webp",
+    title: "Åk 9 besöksdag",
+    date: "5 oktober 2025",
+    content:
+      "Dagen börjar med att vi samlas i Posthuset där du får ditt schema och en påse med lite smått och gott. Du får sedan information från de tre program som du valt, och lunch. Under programpasset får du även träffa olika företag/arbetsgivare som är aktuella för just det programmet. De kan berätta precis vad de söker efter hos sina anställda, och hur det är att jobba där. Passa på att ställa massa frågor även till dem! Vi avslutar sedan dagen tillsammans med gott fika. Välkommen till en inspirerande dag om ditt gymnasieval! ",
+  },
+  {
+    id: "3",
+    img: "./img/img3.webp",
+    title: "Föräldramöte åk 1 9/9",
+    date: "2 september 2025",
+    content:
+      "Till vårdnadshavare för elever i årskurs 1 Välkomna till föräldramöte! Ni är varmt välkomna till skolan för att träffa rektor, mentorer och en del annan personal. Vi vill gärna ha ett nära samarbete med er så att vi tillsammans kan hjälpa eleverna att lyckas med sin skolgång. Det är första terminen för era ungdomar i en ny skolform som ställer annorlunda krav och har andra förutsättningar än tidigare. Tid:      Tisdag 9 september 2025, kl. 18.30. Plats:            Aulan, Bobergsgymnasiet (mitt i huset, en trappa upp från huvudentrén). Vi kommer först ses i helgrupp för en del allmän information. Efter det går ni vidare med mentorerna för ytterligare information och samtal om just er klass. Under kvällen kommer vi att tala om våra regler och rutiner, informera om programmen i gymnasieskolan och hur arbetet med elevernas lärande går till på Bobergsgymnasiet. Naturligtvis bjuder vi även på fika. Välkomna! / Jennie Stadling Wilsson, rektor Bobergsgymnasiet. Vi ber er fylla i nedanstående talong som lämnas till mentor senast torsdag 4/9. Tack!",
+  },
+];
+
+const events = [
+  {
+    day: "10",
+    month: "DEC",
+    title: "Nobeldag/UF-mässa",
+    weekday: "onsdag",
+    statusColor: "yellow",
+  },
+  {
+    day: "19",
+    month: "DEC",
+    title: "Julavslutning",
+    weekday: "fredag",
+    statusColor: "green",
+  },
+  {
+    day: "20",
+    month: "DEC",
+    endDay: "07",
+    endMonth: "JAN",
+    title: "Jullov",
+    weekday: "lördag",
+    statusColor: "red",
+  },
+  {
+    day: "15",
+    month: "JAN",
+    title: "Studiebesök åk2",
+    weekday: "onsdag",
+    statusColor: "yellow",
+  },
+  {
+    day: "28",
+    month: "JAN",
+    endDay: "30",
+    endMonth: "JAN",
+    title: "Nobeldag/UF-mässa",
+    weekday: "onsdag",
+    statusColor: "yellow",
+  },
+  {
+    day: "10",
+    month: "DEC",
+    title: "Nobeldag/UF-mässa",
+    weekday: "onsdag",
+    statusColor: "yellow",
+  },
+  {
+    day: "10",
+    month: "DEC",
+    title: "Nobeldag/UF-mässa",
+    weekday: "onsdag",
+    statusColor: "yellow",
+  },
+  {
+    day: "10",
+    month: "DEC",
+    title: "Nobeldag/UF-mässa",
+    weekday: "onsdag",
+    statusColor: "yellow",
+  },
+  {
+    day: "10",
+    month: "DEC",
+    title: "Nobeldag/UF-mässa",
+    weekday: "onsdag",
+    statusColor: "yellow",
+  },
 ];
 
 const closeMenu = () => {
@@ -87,127 +161,51 @@ const renderNewsDetail = () => {
     }
 };
 
+const createDateElement = (event) => {
+  //Kolla om händelsen har ett slutdatum
+  if (event.endDay && event.endMonth) {
+    //kolla om händelsen är inom samma månad
+    if (event.endMonth === event.month) {
+        //OM samma månad, visa datum i en ruta
+        return `
+        <div class="date-container">
+            <div class="event-date">
+                <h2>${event.day} - ${event.endDay}</h2>
+            </div>
+        </div>
+        <div class ="event-date">
+            <div class="month-container">
+                <p>${event.month} - ${event.endMonth}</p>
+            </div>
+        </div>
+        `;
+    } else {
+        return `
+        <div class="event-date">
+            <div class="date-container">
+                <h2>${event.day}</h2>
+            </div>
+            <div class="date-container">
+                <h2>${event.endDay}</h2>
+            </div>
+        </div>
+        <div class="event-date">
+            <div class="month-container">
+                <h2>${event.month}</h2>
+            </div>
+            <div class="month-container">
+                <h2>${event.endMonth}</h2>
+            </div>
+        </div>
+        `
+    }
+  } else {
+    return `
+    
+    `
+  }
+};
+
+
 if (document.querySelector(".news-grid")) renderNews();
 if (document.querySelector(".news-content")) renderNewsDetail();
-
-
-// EVENTS
-const events = [
-    {
-        date: "10",
-        datemonth: "DEC",
-        heading: "Nobeldag/UF-mässa",
-        day: "Onsdag",
-        statusColor: "yellow"
-    },
-    {
-        date: "19",
-        datemonth: "DEC",
-        heading: "Julavslutning",
-        day: "Fredag",
-        statusColor: "green"
-    },
-    {
-        date: "20",
-        datemonth: "DEC",
-        endDate: "07",
-        endDatemonth: "JAN",
-        heading: "Jullov",
-        day: "Lördag",
-        statusColor: "red"
-    },
-    {
-        date: "09",
-        datemonth: "FEB",
-        heading: "Studiedag",
-        day: "Måndag",
-        statusColor: "red"
-    },
-    {
-        date: "02",
-        datemonth: "MAR",
-        endDate: "08",
-        endDatemonth: "MAR",
-        heading: "Sportlov",
-        day: "Måndag",
-        statusColor: "red"
-    },
-    {
-        date : "03",
-        datemonth: "APR",
-        endDate: "12",
-        endDatemonth: "APR",
-        heading: "Påsklov",
-        day: "Fredag",
-        statusColor: "red"
-    },
-    {
-        date: "30",
-        datemonth: "APR",
-        heading: "Lovdag",
-        day: "Torsdag",
-        statusColor: "red"
-    },
-    {
-        date: "15",
-        datemonth: "MAJ",
-        heading: "Lovdag",
-        day: "Fredag",
-        statusColor: "red"
-    },
-    {
-        date: "12",
-        datemonth: "JUN",
-        heading: "Avslutning/Student",
-        day: "Fredag",
-        statusColor: "yellow"
-    }
-];
-
-let showcounter = 3;
-
-const renderStartEvents = () => {
-    const container = document.querySelector(".events-grid");
-    container.innerHTML = "";
-
-    events.slice(0, showcounter).forEach((event) => {
-        const eventItem = document.createElement("div");
-        eventItem.className = "event-item";
-
-        let endDay = "";
-        if (event.endDate) endDay = event.endDate.split(" ")[0];
-
-        let monthDisplay = event.datemonth;
-        if (event.endDatemonth && event.endDatemonth !== event.datemonth) {
-            monthDisplay = `${event.datemonth} - ${event.endDatemonth}`;
-        }
-
-        const dateDisplay = event.endDate
-            ? `${event.date} - ${endDay}`
-            : event.date;
-
-        eventItem.innerHTML = `
-            <p class="event-date-two">${dateDisplay}</p>
-            <h3 class="event-heading">${event.heading}</h3>
-            <span class="dot"></span>
-            <p class="event-day">${event.day}</p>
-            <span class="event-status ${event['status-color']}"></span>
-            <p class="event-month">${monthDisplay}</p>
-        `;
-
-        container.appendChild(eventItem);
-    });
-};
-
-const showCounterIncrease = () => {
-    showcounter += 3;
-    renderStartEvents();
-
-    if (showcounter >= events.length) {
-        document.querySelector("#load-more-btn").style.display = "none";
-    }
-};
-
-document.querySelector("#load-more-btn").addEventListener("click", showCounterIncrease);
-
-renderStartEvents();
